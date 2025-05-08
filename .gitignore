@@ -34,3 +34,6 @@ build/
 
 # Logs
 *.log
+
+### ENV ###
+src/main/resources/application.properties
