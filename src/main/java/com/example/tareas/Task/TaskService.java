@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,20 +21,18 @@ public class TaskService {
 
     public TaskDto transformarTaskADto(TaskEntity tarea) {
         TaskDto taskDto = new TaskDto();
-        taskDto.setId(tarea.getId());
         taskDto.setTitulo(tarea.getTitulo());
         taskDto.setDescripcion(tarea.getDescripcion());
-        taskDto.setFechaCreacion(tarea.getFechaCreacion());
+        taskDto.setFechaCreacion(LocalDate.now());
         taskDto.setEstatus(tarea.getEstatus());
         return taskDto;
     }
 
     public TaskEntity transformarDtoAEntity(TaskDto dto) {
         TaskEntity task = new TaskEntity();
-        task.setId(dto.getId());
         task.setTitulo(dto.getTitulo());
         task.setDescripcion(dto.getDescripcion());
-        task.setFechaCreacion(dto.getFechaCreacion());
+        task.setFechaCreacion(LocalDate.now());
         task.setEstatus(dto.getEstatus());
         return task;
     }
