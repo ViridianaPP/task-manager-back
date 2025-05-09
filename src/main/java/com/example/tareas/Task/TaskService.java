@@ -47,9 +47,8 @@ public class TaskService {
 
     @Transactional(readOnly = true)
     public ResponseEntity<Message> obtenerTareas() {
-        List<TaskEntity> tareas = taskRepository.findAll();
         return new ResponseEntity<>(
-                new Message(transformarListaTareasADTO(tareas), "Listado de tareas", TypeResponse.SUCCESS),
+                new Message(taskRepository.findAll(), "Listado de tareas", TypeResponse.SUCCESS),
                 HttpStatus.OK);
     }
 
